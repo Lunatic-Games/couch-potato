@@ -49,6 +49,9 @@ func _on_HeartContainer_dead():
 
 
 func _on_Gameover_restart():
+	goal_score = 0
+	current_score = 0
+	$Score.text = "SCORE: " + str(current_score)
 	$Player.playing = true
 	$Player.show_line()
 	$HeartContainer.reset()
