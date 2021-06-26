@@ -45,6 +45,7 @@ func _on_area_entered(area):
 		grabbed_item = area
 		get_tree().call_group("camera", "shake")
 		call_deferred("reparent_item", area)
+		$HitSFX.play()
 
 
 func reparent_item(item):

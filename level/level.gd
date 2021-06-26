@@ -45,10 +45,12 @@ func _on_Player_item_scored(value):
 func _on_HeartContainer_dead():
 	$Player.playing = false
 	$Gameover.visible = true
+	$Player.hide_line()
 
 
 func _on_Gameover_restart():
 	$Player.playing = true
+	$Player.show_line()
 	$HeartContainer.reset()
 	$Conveyor.reset()
 
@@ -57,3 +59,5 @@ func _on_Dialogue_done():
 	get_tree().paused = false
 	$Player.make_remote_visible()
 	$Dialogue.visible = false
+	$Score.visible = true
+	$HeartContainer.visible = true

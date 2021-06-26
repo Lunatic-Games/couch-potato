@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
+[ext_resource path="res://assets/sfx/click.ogg" type="AudioStream" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tiles/tilesheet_complete.png" type="Texture" id=3]
 [ext_resource path="res://assets/tiles/roguelikeIndoor_transparent.png" type="Texture" id=4]
@@ -476,11 +477,12 @@ scale = Vector2( 3, 3 )
 tile_set = SubResource( 2 )
 cell_size = Vector2( 8, 8 )
 format = 1
-tile_data = PoolIntArray( 196629, 8, 0, 196647, 9, 0, 262181, 5, 0, 262183, 6, 0, 262184, 7, 0 )
+tile_data = PoolIntArray( 196628, 8, 0, 196647, 9, 0, 262181, 5, 0, 262183, 6, 0, 262184, 7, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Score" type="Label" parent="."]
+visible = false
 margin_left = 12.0
 margin_top = 1.0
 margin_right = 184.0
@@ -494,6 +496,7 @@ __meta__ = {
 [node name="HeartContainer" type="HBoxContainer" parent="." groups=[
 "heart_container",
 ]]
+visible = false
 margin_left = 25.0
 margin_top = 38.0
 margin_right = 79.0
@@ -770,6 +773,11 @@ color = Color( 0.360784, 0.239216, 0.0509804, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextSFX" type="AudioStreamPlayer" parent="Dialogue"]
+pause_mode = 2
+stream = ExtResource( 1 )
+volume_db = 10.0
 
 [connection signal="item_scored" from="Player" to="." method="_on_Player_item_scored"]
 [connection signal="dead" from="HeartContainer" to="." method="_on_HeartContainer_dead"]

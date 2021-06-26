@@ -37,6 +37,7 @@ func update_angle():
 func send_claw_out():
 	$Claw.send_out(get_global_mouse_position())
 	$Line.visible = false
+	$ShootSFX.play()
 
 
 func _on_Claw_returned(item):
@@ -47,13 +48,24 @@ func _on_Claw_returned(item):
 			$Explosion.visible = true
 			$Explosion.frame = 0
 			$Explosion.play()
+			$ExplosionSFX.play()
 			get_tree().call_group("heart_container", "damage")
+		else:
+			$PickupSFX.play()
 		item.queue_free()
 
 
 func _on_Explosion_animation_finished():
 	$Explosion.visible = false
 	
+
+func hide_line():
+	$Line.visible = false
+
+
+func show_line():
+	$Line.visible = true
+
 
 func make_remote_visible():
 	$Remote.visible = true
